@@ -44,7 +44,7 @@
         gpgsign = true;
       };
       push = {
-        autoSetupRemote = "origin";
+        autoSetupRemote = true;
       };
     };
   };
