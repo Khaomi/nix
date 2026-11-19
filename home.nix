@@ -34,9 +34,9 @@
         email = "git@khaomi.dev";
         signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBqPkrDHU06IGRF+Rs0LGGh0O360x3fz/bfAEwZ8Os63";
       };
-      # credential = {
-      #   helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
-      # };
+      credential = {
+        helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
+      };
       gpg = {
         format = "ssh";
       };
@@ -48,8 +48,6 @@
       };
     };
   };
-
-    programs.git.settings.credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
 
   programs.gpg = {
     enable = true;
@@ -71,7 +69,15 @@
   programs.ripgrep.enable = true;
   programs.jq.enable = true;
   programs.btop.enable = true;
-  programs.gh.enable = true;
+
+  # So fucking troublesome
+  programs.gh = {
+    enable = false;
+    gitCredentialHelper = {
+      enable = false;
+      hosts = [];
+    };
+  };
 
   home.packages = with pkgs; [
     # GUI
@@ -88,9 +94,8 @@
   ];
 
   home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-    PAGER = "less";
+    EDITOR = "vim";
+    VISUAL = "vim";
     BAT_THEME = "Catppuccin Mocha";
   };
 
