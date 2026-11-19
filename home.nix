@@ -40,6 +40,9 @@
       commit = {
         gpgsign = true;
       };
+      push = {
+        autoSetupRemote = "origin";
+      };
     };
   };
 
