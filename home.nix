@@ -34,6 +34,9 @@
         email = "git@khaomi.dev";
         signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBqPkrDHU06IGRF+Rs0LGGh0O360x3fz/bfAEwZ8Os63";
       };
+      # credential = {
+      #   helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
+      # };
       gpg = {
         format = "ssh";
       };
@@ -45,6 +48,8 @@
       };
     };
   };
+
+    programs.git.settings.credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
 
   programs.gpg = {
     enable = true;
