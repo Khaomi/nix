@@ -71,13 +71,13 @@
   programs.btop.enable = true;
 
   # So fucking troublesome
-  programs.gh = {
-    enable = false;
-    gitCredentialHelper = {
-      enable = false;
-      hosts = [];
-    };
-  };
+  # programs.gh = {
+  #   enable = false;
+  #   gitCredentialHelper = {
+  #     enable = false;
+  #     hosts = [];
+  #   };
+  # };
 
   home.packages = with pkgs; [
     # GUI
