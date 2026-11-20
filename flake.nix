@@ -40,6 +40,7 @@
           "sable"
           "batfi"
           "tailscale-app"
+	  "pangolin"
         ];
 
         homebrew.vscode = [
@@ -84,7 +85,7 @@
         nixpkgs.hostPlatform = "aarch64-darwin";
 
 
-          # MY OWN OPTIONS YIPPE
+        # MY OWN OPTIONS YIPPE
         system.primaryUser = "khaomi";
         system.startup.chime = false;
         system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
@@ -115,6 +116,12 @@
 
         networking.hostName = "LixBook-Air";
         networking.computerName = "LixBook Air";
+
+        # My Nix STUFF! 
+        nix.gc.automatic = true;
+        nix.gc.interval = { Day = 1; };
+        nix.gc.options = "--delete-older-than 7d";
+        nix.settings.auto-optimise-store = true;
       };
     in
     {
