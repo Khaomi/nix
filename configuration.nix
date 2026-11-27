@@ -4,6 +4,8 @@
   ...
 }:
 {
+  imports = [./remote-build.nix];
+
   nix.package = pkgs.lix;
   nixpkgs.config.allowUnfree = true;
 
@@ -103,24 +105,4 @@
     extraSpecialArgs = { inherit inputs; };
     users.khaomi = ./home.nix;
   };
-
-  # Hardlight Remote Builder
-  nix.distributedBuilds = true;
-  nix.settings.builders-use-substitutes = true;
-  nix.buildMachines = [
-    {
-      hostName = "build1.hardlight.internal";
-      protocol = "ssh-ng";
-      sshUser = "nix-ssh";
-      sshKey = "/var/root/.ssh/remotebuild";
-      system = "x86_64-linux";
-      maxJobs = 4;
-      speedFactor = 2;
-      supportedFeatures = [
-        "nixos-test"
-        "big-parallel"
-        "kvm"
-      ];
-    }
-  ];
 }
